@@ -163,15 +163,23 @@ The `/metrics` endpoint exposes Prometheus-style metrics, including counters for
 
 ```
 app/
- ├── main.py        # FastAPI app and routes
- ├── config.py      # Environment configuration
- ├── models.py      # Database initialization
- ├── storage.py     # Database operations
- ├── metrics.py     # Prometheus metrics
-Dockerfile
-docker-compose.yml
-requirements.txt
-README.md
+ ├── main.py           # FastAPI app, middleware, routes
+ ├── config.py         # Environment variable loading
+ ├── models.py         # SQLite database initialization
+ ├── storage.py        # Database operations (insert, query)
+ ├── logging_utils.py  # Structured JSON logging helpers
+ ├── metrics.py        # Prometheus metrics helpers
+
+tests/                 # Optional pytest-based integration tests
+ ├── test_webhook.py   # Webhook signature & idempotency tests
+ ├── test_messages.py  # /messages pagination & filters tests
+ ├── test_stats.py     # /stats correctness tests
+
+Dockerfile              # Docker image definition
+docker-compose.yml      # Service orchestration
+requirements.txt        # Python dependencies
+README.md               # Project documentation
+
 ```
 
 ---
